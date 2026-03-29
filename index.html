@@ -2,18 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Guía instalación</title>
+<title>Guía SEES 2026</title>
 
 <style>
 body {
   font-family: Arial, sans-serif;
-  padding: 40px;
+  margin: 40px;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
 }
 
 .code-container {
-  background: #f5f5f5;
+  background: #f6f8fa;
   border-radius: 8px;
-  padding: 15px;
+  padding: 12px;
+  margin: 10px 0;
   position: relative;
   font-family: monospace;
   white-space: pre;
@@ -22,39 +28,180 @@ body {
 
 .copy-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #007bff;
+  top: 8px;
+  right: 8px;
+  background: #2ea44f;
   color: white;
   border: none;
   padding: 5px 10px;
-  cursor: pointer;
+  font-size: 12px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .copy-btn:hover {
-  background: #0056b3;
+  background: #22863a;
+}
+
+.step {
+  margin-bottom: 20px;
 }
 </style>
 
 </head>
 <body>
 
-<h2>Instalación</h2>
+<h1>ESTA GUÍA VA DIRIGIDA A LOS PARTICIPANTES DE LA ESCUELA DE PRIMAVERA DE LA SEES 2026</h1>
 
-<div class="code-container" id="code">
-<button class="copy-btn" onclick="copyCode()">Copiar</button>
+<p>
+Los siguientes pasos son con la finalidad de que los participantes instalen de manera previa las herramientas libres (Librelane) para ejecutar el flujo de diseño de un ASIC. Se entiende que todos los participantes están usando Windows 10+ como sistema operativo (OS) en sus computadoras personales. En caso de tener un OS diferente por favor contactar con los organizadores de la Escuela (<a href="mailto:sgarduno@cinvestav.mx">sgarduno@cinvestav.mx</a>, <a href="mailto:jsanchezl@cinvestav.mx">jsanchezl@cinvestav.mx</a>).
+</p>
+
+<h2>Pasos que seguir:</h2>
+
+<div class="step">
+1. Abrir PowerShell en modo administrador (botón de inicio + buscar (PowerShell) + clic derecho sobre el ícono + ejecutar como administrador).
+</div>
+
+<div class="step">
+2. Instala <strong>WSL</strong> en tu PC, escribe y ejecuta (dar Enter):
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+wsl --install
+</div>
+</div>
+
+<div class="step">
+3. Si no funciona revisa el siguiente enlace:
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install">https://docs.microsoft.com/en-us/windows/wsl/install</a>. 
+<strong>Si funcionó solo salta al siguiente paso.</strong>
+</div>
+
+<div class="step">
+4. Reinicia tu computadora.
+</div>
+
+<div class="step">
+5. Abrir PowerShell en modo administrador (ver paso 1).
+</div>
+
+<div class="step">
+6. Instala Ubuntu escribiendo y ejecutando (dar Enter):
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+wsl --install -d Ubuntu
+</div>
+</div>
+
+<div class="step">
+7. Revisa que se instaló correctamente con:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+wsl --list --verbose
+</div>
+Deberías ver en consola algo como lo siguiente:
+
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+PS C:\Users\user> wsl --list --verbose
+NAME      STATE    VERSION
+* Ubuntu  Running  2
+</div>
+</div>
+</div>
+
+<div class="step">
+8. Ve al menú de inicio (botón de inicio) y busca <strong>Ubuntu</strong> y da clic sobre su ícono. Esto
+abrirá la terminal de Ubuntu/Linux en tu PC de Windows.
+</div>
+
+<div class="step">
+9. Escribe y ejecuta (Enter) el siguiente comando:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+sudo apt-get install -y curl
+</div>
+</div>
+
+<div class="step">
+10. Escribe y ejecuta (Enter) el siguiente comando:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
 curl --proto '=https' --tlsv1.2 -fsSL https://artifacts.nixos.org/nix-installer | sh -s -- install --no-confirm --extra-conf "
     extra-substituters = https://nix-cache.fossi-foundation.org
     extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
 "
 </div>
+</div>
+
+<div class="step">
+11. Seguidamente escribe y ejecuta (Enter) este comando:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+</div>
+</div>
+
+<div class="step">
+12. Asegúrate de cerrar la terminal de Ubuntu una vez finalizado el paso anterior y ábrela
+nuevamente (ver paso 8).
+</div>
+
+<div class="step">
+13. Clonar Librelane con este comando:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+git clone https://github.com/librelane/librelane
+</div>
+</div>
+
+<div class="step">
+14. Aparecerá una carpeta llamada <strong>librelane</strong>.
+</div>
+
+<div class="step">
+15. Puedes verla escribiendo y ejecutando (dar Enter) en la terminal de Ubuntu:
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+ls
+</div>
+</div>
+
+<div class="step">
+16. Entra a la carpeta librelane escribiendo y ejecutando (Enter):
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+cd librelane/
+</div>
+</div>
+
+<div class="step">
+17. Una vez dentro de la carpeta librelane, ejecuta (escribe y da Enter):
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+nix-shell
+</div>
+</div>
+
+<div class="step">
+18. Ejecuta el siguiente comando (escribe y da Enter):
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+librelane --log-level ERROR --condensed --show-progress-bar --smoke-test
+</div>
+</div>
+
+<div class="step">
+19. Listo ya tienes instalada las herramientas libres para correr todo el flujo de diseño de
+un ASIC, ya tienes todo listo para la Escuela de Primavera. <strong>¡¡FELICIDADES!!</strong>
+</div>
 
 <script>
-function copyCode() {
-  const text = document.getElementById("code").innerText.replace("Copiar", "").trim();
-  navigator.clipboard.writeText(text);
-  alert("Copiado al portapapeles");
+function copyCode(button) {
+  const code = button.parentElement.innerText.replace("Copiar", "").trim();
+  navigator.clipboard.writeText(code);
+  button.innerText = "Copiado";
+  setTimeout(() => button.innerText = "Copiar", 2000);
 }
 </script>
 
